@@ -12,7 +12,13 @@ public class Renderer implements GLEventListener {
         // Angle courant de rotation sur l'axe Y
         public float alphaY=0f;        
         // Angle courant de rotation sur l'axe Z
-        public float alphaZ=0f;        
+        public float alphaZ=0f;   
+        // Angle courant de rotation sur l'axe X
+        public float transX=0f;        
+        // Angle courant de rotation sur l'axe Y
+        public float transY=0f;        
+        // Angle courant de rotation sur l'axe Z
+        public float transZ=0f;       
 
         
         /**
@@ -74,6 +80,9 @@ public class Renderer implements GLEventListener {
                 gl.glRotatef(alphaZ,
                                         0f, 0f, 1f 
                 );
+                
+                // Translation sur les axes x, y, z
+                gl.glTranslatef(transX, transY, transZ);
 
                 // Tous les dessins utltérieurs subiront la transformation : Dessin d'un cube
                 new Cube(2.0f, 0, 0, 0).draw(gl);                                                            

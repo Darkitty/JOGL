@@ -26,7 +26,13 @@ public class Main extends Frame{
                 private boolean isUpPressed;
                 private boolean isDownPressed;
                 private boolean isLeftPressed;
-                private boolean isrightPressed;
+                private boolean isRightPressed;
+                private boolean isZPressed;
+                private boolean isQPressed;
+                private boolean isSPressed;
+                private boolean isDPressed;
+                private boolean isAPressed;
+                private boolean isEPressed;
 
                 private MyKeyListener(Main m, Renderer r) {
                         $this = m;
@@ -40,8 +46,20 @@ public class Main extends Frame{
                                 renderer.alphaX -= 0.8;
                         if(isLeftPressed)
                                 renderer.alphaY -= 0.8;
-                        if(isrightPressed)
+                        if(isRightPressed)
                                 renderer.alphaY += 0.8;
+                        if(isZPressed)
+                            	renderer.transX += 0.2;
+	                    if(isQPressed)
+	                            renderer.transY -= 0.2;
+	                    if(isSPressed)
+	                            renderer.transX -= 0.2;
+	                    if(isDPressed)
+	                            renderer.transY += 0.2;
+	                    if(isAPressed)
+                            	renderer.transZ -= 0.2;
+	                    if(isEPressed)
+                            	renderer.transZ += 0.2;
                 }
 
                 public void keyPressed(KeyEvent e) {
@@ -57,11 +75,29 @@ public class Main extends Frame{
                                         isDownPressed = true;
                                         break;
                                 case KeyEvent.VK_RIGHT:
-                                        isrightPressed = true;
+                                        isRightPressed = true;
                                         break;
                                 case KeyEvent.VK_LEFT:
                                         isLeftPressed = true;
                                         break;
+                                case KeyEvent.VK_Z:
+                                    isZPressed = true;
+                                    break;
+                                case KeyEvent.VK_Q:
+                                    isQPressed = true;
+                                    break;
+                                case KeyEvent.VK_S:
+                                    isSPressed = true;
+                                    break;
+                                case KeyEvent.VK_D:
+                                    isDPressed = true;
+                                    break;
+                                case KeyEvent.VK_A:
+                                    isAPressed = true;
+                                    break;
+                                case KeyEvent.VK_E:
+                                    isEPressed = true;
+                                    break;
                         }
                         doThat();
                 }
@@ -75,11 +111,29 @@ public class Main extends Frame{
                                         isDownPressed = false;
                                         break;
                                 case KeyEvent.VK_RIGHT:
-                                        isrightPressed = false;
+                                        isRightPressed = false;
                                         break;
                                 case KeyEvent.VK_LEFT:
                                         isLeftPressed = false;
                                         break;
+                                case KeyEvent.VK_Z:
+                                    isZPressed = false;
+                                    break;
+                                case KeyEvent.VK_Q:
+                                    isQPressed = false;
+                                    break;
+                                case KeyEvent.VK_S:
+                                    isSPressed = false;
+                                    break;
+                                case KeyEvent.VK_D:
+                                    isDPressed = false;
+                                    break;
+                                case KeyEvent.VK_A:
+                                    isAPressed = false;
+                                    break;
+                                case KeyEvent.VK_E:
+                                    isEPressed = false;
+                                    break;
                         }
                 }
         }
