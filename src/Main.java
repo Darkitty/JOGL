@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import javax.media.opengl.awt.GLCanvas;
 
 import com.jogamp.opengl.util.FPSAnimator;
+import com.leapmotion.leap.*;
 
 @SuppressWarnings("serial")
 public class Main extends Frame{
@@ -15,8 +16,7 @@ public class Main extends Frame{
 	private GLCanvas canvas;                      
 
 		// Gestionnaire du FPS, permet de ménager le CPU
-	private final FPSAnimator animator;    
-
+	private final FPSAnimator animator;
 
 		// Classe interne chargée des évenements claviers
 	private static final class MyKeyListener extends KeyAdapter {
@@ -40,26 +40,16 @@ public class Main extends Frame{
 		}
 
 		private void doThat(){
-			if(isDownPressed)
-				renderer.alphaX += 0.8;
-			if(isUpPressed)
-				renderer.alphaX -= 0.8;
-			if(isLeftPressed)
-				renderer.alphaY -= 0.8;
-			if(isRightPressed)
-				renderer.alphaY += 0.8;
-			if(isZPressed)
-				renderer.transX += 0.2;
-			if(isQPressed)
-				renderer.transY -= 0.2;
-			if(isSPressed)
-				renderer.transX -= 0.2;
-			if(isDPressed)
-				renderer.transY += 0.2;
-			if(isAPressed)
-				renderer.transZ -= 0.2;
-			if(isEPressed)
-				renderer.transZ += 0.2;
+	    	//Creation de la connexion avec le LeapMotion
+	    	Controller controller = new Controller();
+	    	com.leapmotion.leap.Frame frame = controller.frame();
+	    	HandList hands = frame.hands();
+	    	Hand firstHand = hands.get(0);
+			if(isDownPressed) {
+		    	renderer.alphaX = 10*firstHand.direction().getX();
+				renderer.alphaY = 10*firstHand.direction().getY();
+				renderer.transZ = 10*firstHand.direction().getZ();
+			}
 		}
 
 		public void keyPressed(KeyEvent e) {
@@ -143,7 +133,7 @@ public class Main extends Frame{
 		// Appel du constructeur parent
 		super();
 		// Spécifie la taille de la fenêtre
-		setSize(500,500);
+		setSize(1000,1000);
 		// Renseigne le titre de la fenetre
 		setTitle("Manipulation d'une boite en 3D");
 		// Permet de centrer la fenetre à l'ouverture
@@ -178,10 +168,11 @@ public class Main extends Frame{
 		addKeyListener(new MyKeyListener(this, renderer));    
 		canvas.addKeyListener(new MyKeyListener(this, renderer));
 
+
 		// Masque les menus et bordures de la fenetre
 		setUndecorated(true);
 		// Permet d'être en mode plein écran*/
-		setExtendedState(Frame.MAXIMIZED_BOTH);        
+		//setExtendedState(Frame.MAXIMIZED_BOTH);        
 
 		// Démarrage de l'animateur
 		animator.start();

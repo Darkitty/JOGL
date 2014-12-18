@@ -1,3 +1,4 @@
+import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
@@ -56,8 +57,8 @@ public class Renderer implements GLEventListener {
 		// Réinitialisation de la scène (effacement des tampons)
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);        
 		// Reinitialisation de la matrice courante
-		gl.glLoadIdentity();                                                                                  
-
+		gl.glLoadIdentity();
+		
 		/* (Alt aux translations) Placement de la caméra au point (4,0,12)
 		Direction vers l'origine de la scène (0,0,0)
 		Inclinaison nulle car la vue suit l'axe vertical (y) */
@@ -80,12 +81,14 @@ public class Renderer implements GLEventListener {
 		gl.glRotatef(alphaZ,
 					0f, 0f, 1f 
 		);
-		
+
+		new Axes().draw(gl);
+		//gl.glRotated(45, 0, 1, 0);
 		// Translation sur les axes x, y, z
 		gl.glTranslatef(transX, transY, transZ);
 
 		// Tous les dessins utltérieurs subiront la transformation : Dessin d'un cube
-		new Cube(2.0f, 0, 0, 0).draw(gl);                                                            
+		new Cube(1.0f, 0, 0, 0).draw(gl);
 	}
 
 	
