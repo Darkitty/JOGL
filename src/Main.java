@@ -23,6 +23,7 @@ public class Main extends Frame{
 
 		private final Main $this;
 		private final Renderer renderer;
+		private boolean isSpacePressed;
 		private boolean isUpPressed;
 		private boolean isDownPressed;
 		private boolean isLeftPressed;
@@ -45,11 +46,31 @@ public class Main extends Frame{
 	    	com.leapmotion.leap.Frame frame = controller.frame();
 	    	HandList hands = frame.hands();
 	    	Hand firstHand = hands.get(0);
-			if(isDownPressed) {
+			if(isSpacePressed) {
 		    	renderer.alphaX = 10*firstHand.direction().getX();
 				renderer.alphaY = 10*firstHand.direction().getY();
 				renderer.transZ = 10*firstHand.direction().getZ();
 			}
+			if(isDownPressed)
+				renderer.alphaX += 0.8;
+			if(isUpPressed)
+				renderer.alphaX -= 0.8;
+			if(isLeftPressed)
+				renderer.alphaY -= 0.8;
+			if(isRightPressed)
+				renderer.alphaY += 0.8;
+			if(isZPressed)
+				renderer.transX += 0.2;
+			if(isQPressed) 	
+				renderer.transY -= 0.2; 	
+			if(isSPressed) 	
+				renderer.transX -= 0.2; 	
+			if(isDPressed) 	
+				renderer.transY += 0.2; 	
+			if(isAPressed) 	
+				renderer.transZ -= 0.2; 	
+			if(isEPressed) 	
+				renderer.transZ += 0.2;
 		}
 
 		public void keyPressed(KeyEvent e) {
@@ -60,6 +81,9 @@ public class Main extends Frame{
 					break;
 				case KeyEvent.VK_UP:
 					isUpPressed = true;
+					break;
+				case KeyEvent.VK_SPACE:
+					isSpacePressed = true;
 					break;
 				case KeyEvent.VK_DOWN:
 					isDownPressed = true;
@@ -96,6 +120,9 @@ public class Main extends Frame{
 			switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
 					isUpPressed = false;
+					break;
+				case KeyEvent.VK_SPACE:
+					isSpacePressed = false;
 					break;
 				case KeyEvent.VK_DOWN:
 					isDownPressed = false;
