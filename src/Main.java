@@ -47,9 +47,9 @@ public class Main extends Frame{
 	    	HandList hands = frame.hands();
 	    	Hand firstHand = hands.get(0);
 			if(isSpacePressed) {
-		    	renderer.alphaX = 10*firstHand.direction().getX();
-				renderer.alphaY = 10*firstHand.direction().getY();
-				renderer.transZ = 10*firstHand.direction().getZ();
+		    	renderer.alphaX = firstHand.palmPosition().getX();
+				renderer.alphaY = firstHand.palmPosition().getY();
+				renderer.transZ = firstHand.palmPosition().getZ();
 			}
 			if(isDownPressed)
 				renderer.alphaX += 0.8;
