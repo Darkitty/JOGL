@@ -9,10 +9,10 @@ public class Axes {
 	public void draw(GL2 gl){
 
 		// Dessin de 6 quadrilateres : {4 vertex = 1 quadrilatère}
-		gl.glBegin(GL2.GL_LINES);                                    
+		//gl.glBegin(GL2.GL_LINES);                                    
 
 		// le quadrilatere de devant et de derriere, blanc
-		gl.glColor3f(1f, 1f, 1f);                            
+		/*gl.glColor3f(1f, 1f, 1f);                            
 
 		gl.glVertex3f(-300, 0, 0);
 		gl.glVertex3f(300, 0, 0);
@@ -20,7 +20,21 @@ public class Axes {
 		gl.glVertex3f(0, -300, 0);
 		gl.glVertex3f(0, 300, 0);
 		
-		gl.glEnd();
+		gl.glEnd();*/
+		
+		gl.glBegin(GL2.GL_LINE_LOOP);
+        gl.glVertex3f(-5, -5, 0);
+        gl.glVertex3f(-5, 5, 0);
+        gl.glVertex3f(5, 5, 0);
+        gl.glVertex3f(5, -5, 0);
+        gl.glEnd();
+
+		gl.glBegin(GL2.GL_LINE_LOOP);
+        gl.glVertex3f(-5, 0, -5);
+        gl.glVertex3f(-5, 0, 5);
+        gl.glVertex3f(5, 0, 5);
+        gl.glVertex3f(5, 0, -5);
+        gl.glEnd();
 
 	}
 

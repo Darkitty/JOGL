@@ -52,11 +52,14 @@ public class Renderer implements GLEventListener {
 	@Override
 	public void display(GLAutoDrawable drawable) {
 		// Récupération du contexte en GL2
-		GL2 gl = drawable.getGL().getGL2();                                                  
+		GL2 gl = drawable.getGL().getGL2(); 
+		GL2 gl2 = drawable.getGL().getGL2();                                                  
 		// Réinitialisation de la scène (effacement des tampons)
-		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);        
+		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);  
+		gl2.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);        
 		// Reinitialisation de la matrice courante
 		gl.glLoadIdentity();
+		gl2.glLoadIdentity();
 		
 		/* (Alt aux translations) Placement de la caméra au point (4,0,12)
 		Direction vers l'origine de la scène (0,0,0)
@@ -81,7 +84,7 @@ public class Renderer implements GLEventListener {
 					0f, 0f, 1f 
 		);
 
-		new Axes().draw(gl);
+		new Axes().draw(gl2);
 		//gl.glRotated(45, 0, 1, 0);
 		// Translation sur les axes x, y, z
 		gl.glTranslatef(transX, transY, transZ);

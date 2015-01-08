@@ -178,7 +178,7 @@ public class Main extends Frame{
 		// Appel du constructeur parent
 		super();
 		// Spécifie la taille de la fenêtre
-		setSize(1000,1000);
+		setSize(1300,1000);
 		// Renseigne le titre de la fenetre
 		setTitle("Manipulation d'une boite en 3D");
 		// Permet de centrer la fenetre à l'ouverture
