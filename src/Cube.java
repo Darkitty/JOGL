@@ -9,11 +9,11 @@ public class Cube {
 	private int [] position;
 
 	public Cube(float taille, int x, int y, int z){
-	tailleSur2 = taille;
-	position = new int [3];
-	position[0] = x;
-	position[1] = y;
-	position[2] = z;
+		tailleSur2 = taille;
+		position = new int [3];
+		position[0] = x;
+		position[1] = y;
+		position[2] = z;
 	}
 
 	public void draw(GL2 gl){

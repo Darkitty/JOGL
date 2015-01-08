@@ -34,6 +34,8 @@ public class Main extends Frame{
 		private boolean isDPressed;
 		private boolean isAPressed;
 		private boolean isEPressed;
+		private boolean isOPressed;
+		private boolean isPPressed;
 
 		private MyKeyListener(Main m, Renderer r) {
 			$this = m;
@@ -59,6 +61,10 @@ public class Main extends Frame{
 				renderer.alphaY -= 0.8;
 			if(isRightPressed)
 				renderer.alphaY += 0.8;
+			if(isPPressed)
+				renderer.alphaZ += 0.8;
+			if(isOPressed)
+				renderer.alphaZ -= 0.8;
 			if(isZPressed)
 				renderer.transX += 0.2;
 			if(isQPressed) 	
@@ -79,11 +85,11 @@ public class Main extends Frame{
 					$this.animator.stop();
 					System.exit(0);
 					break;
-				case KeyEvent.VK_UP:
-					isUpPressed = true;
-					break;
 				case KeyEvent.VK_SPACE:
 					isSpacePressed = true;
+					break;
+				case KeyEvent.VK_UP:
+					isUpPressed = true;
 					break;
 				case KeyEvent.VK_DOWN:
 					isDownPressed = true;
@@ -93,6 +99,12 @@ public class Main extends Frame{
 					break;
 				case KeyEvent.VK_LEFT:
 					isLeftPressed = true;
+					break;
+				case KeyEvent.VK_O:
+					isOPressed = true;
+					break;
+				case KeyEvent.VK_P:
+					isPPressed = true;
 					break;
 				case KeyEvent.VK_Z:
 					isZPressed = true;
@@ -132,6 +144,12 @@ public class Main extends Frame{
 					break;
 				case KeyEvent.VK_LEFT:
 					isLeftPressed = false;
+					break;
+				case KeyEvent.VK_O:
+					isOPressed = false;
+					break;
+				case KeyEvent.VK_P:
+					isPPressed = false;
 					break;
 				case KeyEvent.VK_Z:
 					isZPressed = false;

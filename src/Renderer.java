@@ -1,4 +1,3 @@
-import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
@@ -72,12 +71,12 @@ public class Renderer implements GLEventListener {
 					1f, 0f, 0f
 		);
 
-		// Rotation de la matrice courante de l'angle alpha autour de l'axe x (0,1,0)
+		// Rotation de la matrice courante de l'angle alpha autour de l'axe y (0,1,0)
 		gl.glRotatef(alphaY,
 					0f, 1f, 0f
 		);
 
-		// Rotation de la matrice courante de l'angle alpha autour de l'axe x (0,0,1)
+		// Rotation de la matrice courante de l'angle alpha autour de l'axe z (0,0,1)
 		gl.glRotatef(alphaZ,
 					0f, 0f, 1f 
 		);
